@@ -1,23 +1,71 @@
 <!DOCTYPE html>
 <html>
 <head>
-</head>
-<body style="font-family:Arial;text-align:center;margin-top:50px;">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
 
-<h2>Tap to Sign In</h2>
+body{
+  font-family: Arial, sans-serif;
+  background:#eef2f7;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  margin:0;
+}
 
-<button onclick="go()" style="
+.card{
+  background:white;
+  padding:40px;
+  border-radius:14px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+  text-align:center;
+  width:300px;
+}
+
+h1{
+  font-size:28px;
+  margin-bottom:20px;
+}
+
+button{
   font-size:20px;
   padding:15px 30px;
   border:none;
   border-radius:8px;
   background:#2ecc71;
   color:white;
-">
-Continue
-</button>
+  cursor:pointer;
+  width:100%;
+}
+
+button:hover{
+  background:#27ae60;
+}
+
+.note{
+  margin-top:15px;
+  color:#666;
+  font-size:14px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>Tap to Sign In</h1>
+
+<button onclick="go()">Continue</button>
+
+<div class="note">Please tap to confirm your sign-in</div>
+
+</div>
 
 <script>
+
 function generateToken(){
   const now = Math.floor(Date.now()/30000);
   return btoa("tRv9x_2026_secret"+now).substring(0,8);
@@ -29,6 +77,7 @@ function go(){
 
   window.location.href = url;
 }
+
 </script>
 
 </body>
