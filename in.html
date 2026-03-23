@@ -1,19 +1,32 @@
-<body>
-<p>Tap below to continue</p>
-<button onclick="go()">Continue</button>
-
+<!DOCTYPE html>
+<html>
+<head>
 <script>
 function generateToken(){
   const now = Math.floor(Date.now()/30000);
   return btoa("tRv9x_2026_secret"+now).substring(0,8);
 }
 
-function go(){
-  const url = "https://script.google.com/macros/s/AKfycbx_KWBAXeKPFoOez0j-R3OXaYq1XL-kXruzQ1cEdnshOnM4MR8lmOXoSINxUTuyvDWdAw/exec"
-    + "?action=IN&token=" + generateToken();
-  window.location.href = url;
-}
+const base = "https://script.google.com/macros/s/AKfycbx_KWBAXeKPFoOez0j-R3OXaYq1XL-kXruzQ1cEdnshOnM4MR8lmOXoSINxUTuyvDWdAw/exec";
 
-window.onload = go;
+window.onload = function() {
+
+  const url = base + "?action=IN&token=" + generateToken();
+
+  // 🔑 Force external browser
+  try {
+    window.open(url, "_blank");
+  } catch(e) {}
+
+  // 🔁 Fallback if blocked
+  setTimeout(function(){
+    window.location.href = url;
+  }, 800);
+
+};
 </script>
+</head>
+<body>
+Redirecting...
 </body>
+</html>
