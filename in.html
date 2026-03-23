@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function generateToken(){
+  const now = Math.floor(Date.now()/30000);
+  return btoa("tRv9x_2026_secret"+now).substring(0,8);
+}
+
+const base = "https://script.google.com/macros/s/AKfycbx_KWBAXeKPFoOez0j-R3OXaYq1XL-kXruzQ1cEdnshOnM4MR8lmOXoSINxUTuyvDWdAw/exec";
+
+window.location.href = base + "?action=IN&token=" + generateToken();
+</script>
+</head>
+<body>
+Redirecting...
+</body>
+</html>
