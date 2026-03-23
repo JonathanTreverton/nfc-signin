@@ -10,9 +10,15 @@ function generateToken(){
 const base = "https://script.google.com/macros/s/AKfycbx_KWBAXeKPFoOez0j-R3OXaYq1XL-kXruzQ1cEdnshOnM4MR8lmOXoSINxUTuyvDWdAw/exec";
 
 window.onload = function() {
+  const url = base + "?action=IN&token=" + generateToken();
+
+  // 👇 THIS IS THE KEY FIX
+  window.open(url, "_system");  // forces external browser
+
+  // fallback
   setTimeout(function(){
-    window.location.href = base + "?action=IN&token=" + generateToken();
-  }, 500); // 👈 THIS FIXES ANDROID
+    window.location.href = url;
+  }, 500);
 };
 </script>
 </head>
